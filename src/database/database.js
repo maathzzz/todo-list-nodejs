@@ -64,4 +64,14 @@ export class Database {
             this.#persist()
         })
     }
+
+    setIsComplete(table, id, data) {
+        const registerToUpdate = this.#database[table].find(register => register.id === id)
+        const updateKeys =  Object.keys(data)
+
+        updateKeys.forEach(key => {
+            registerToUpdate[key] = data[key]
+            this.#persist()
+        })
+    }
 }
